@@ -373,6 +373,68 @@ function SHd({ title, desc }: { title: string; desc?: string }) {
   )
 }
 
+function SectionGrid({
+  children,
+  cols,
+  className,
+}: {
+  children: React.ReactNode
+  cols: "5" | "3" | "2" | "2-tight" | "summary"
+  className?: string
+}) {
+  const gridClass = `responsive-grid grid-${cols}${className ? ` ${className}` : ""}`
+  return <div className={gridClass}>{children}</div>
+}
+
+function MobileScenarioCards({ lang }: { lang: Lang }) {
+  return (
+    <div className="mobile-only comparison-card-list" data-testid="scenarios-mobile">
+      {SCENARIOS[lang].map((scenario) => (
+        <article key={scenario.scenario} className="comparison-card card">
+          <div className="comparison-card-head">
+            <div>
+              <strong className="comparison-card-title">{scenario.scenario}</strong>
+              <div className="comparison-badges">
+                <span className="tag tag-black comparison-tag-mono">{scenario.delta}</span>
+                <span className="tag">{lang === "zh" ? "实测" : "tested"}</span>
+              </div>
+            </div>
+          </div>
+          <div className="comparison-panels">
+            <div className="comparison-panel comparison-panel-muted">
+              <span className="comparison-label">Without</span>
+              <p>{scenario.without}</p>
+            </div>
+            <div className="comparison-panel">
+              <span className="comparison-label">With PUA</span>
+              <p>{scenario.with}</p>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  )
+}
+
+function MobileExcuseCards({ lang, L }: { lang: Lang; L: (value: Record<Lang, string>) => string }) {
+  return (
+    <div className="mobile-only comparison-card-list" data-testid="excuses-mobile">
+      {EXCUSES.map((excuse) => (
+        <article key={L(excuse.excuse)} className="comparison-card card">
+          <div className="comparison-card-head">
+            <strong className="comparison-card-title comparison-card-title-mono">{L(excuse.excuse)}</strong>
+            <span className="tag tag-black">{excuse.level}</span>
+          </div>
+          <div className="comparison-panel">
+            <span className="comparison-label">{lang === "zh" ? "反击" : "Counter"}</span>
+            <p>{L(excuse.counter)}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  )
+}
+
 /* ── Install Tabs ── */
 function InstallTabs({ lang }: { lang: Lang }) {
   const [tab, setTab] = useState<"claude" | "codex" | "project">("claude")
@@ -402,16 +464,16 @@ function InstallTabs({ lang }: { lang: Lang }) {
 
   return (
     <div>
-      <div className="tab-bar" style={{ marginBottom: "0.75rem" }}>
+      <div className="tab-bar tab-bar-install" style={{ marginBottom: "0.75rem" }}>
         <button className={`tab-btn${tab === "claude" ? " active" : ""}`} onClick={() => setTab("claude")}>Claude Code</button>
         <button className={`tab-btn${tab === "codex" ? " active" : ""}`} onClick={() => setTab("codex")}>Codex CLI</button>
         <button className={`tab-btn${tab === "project" ? " active" : ""}`} onClick={() => setTab("project")}>
           {lang === "zh" ? "项目级安装" : "Project-Level"}
         </button>
       </div>
-      <div className="card" style={{ padding: "1.25rem" }}>
+      <div className="card install-panel">
         <p style={{ fontSize: "0.875rem", color: "var(--text-secondary)", marginBottom: "0.875rem", lineHeight: 1.65 }}>{cur.desc}</p>
-        <div className="code-inline" style={{ whiteSpace: "pre" as const, overflowX: "auto", lineHeight: 1.75 }}>
+        <div className="code-inline code-inline-pre" style={{ whiteSpace: "pre" as const, overflowX: "auto", lineHeight: 1.75 }}>
           {cur.code}
           <CopyBtn text={cur.code} />
         </div>
@@ -425,6 +487,19 @@ export default function App() {
   const [lang, setLang] = useState<Lang>("zh")
   const [activeTab, setActiveTab] = useState("Alibaba")
   const L = (o: Record<Lang, string>) => o[lang]
+  const activeBenchmark = BENCHMARKS.find((benchmark) => benchmark.name === activeTab) ?? BENCHMARKS[0]
+  const benchmarkSummary = [
+    { val: "+50%", label: lang === "zh" ? "修复深度提升" : "Deeper Fixes" },
+    { val: "2x", label: lang === "zh" ? "验证次数" : "Verification Runs" },
+    { val: "5-step", label: lang === "zh" ? "结构化方法论" : "Structured Method" },
+  ]
+  const benchmarkStats = [
+    { key: "pass-rate", val: "100%", label: lang === "zh" ? "通过率（两组均同）" : "Pass Rate (both)" },
+    { key: "fix-points", val: "+36%", label: lang === "zh" ? "修复点数↑" : "More Fix Points" },
+    { key: "verification", val: "+65%", label: lang === "zh" ? "验证次数↑" : "More Verifications" },
+    { key: "tooling", val: "+50%", label: lang === "zh" ? "工具调用↑" : "Tool Use Increase" },
+    { key: "hidden-issues", val: "+50%", label: lang === "zh" ? "隐藏问题发现率↑" : "Hidden Issues Found" },
+  ]
 
   return (
     <div>
@@ -500,7 +575,7 @@ export default function App() {
       {/* Problems */}
       <Sec>
         <SHd title={L(t.problemTitle)} desc={L(t.problemDesc)} />
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: "1rem" }}>
+        <SectionGrid cols="5">
           {PROBLEMS[lang].map(p => (
             <div key={p.n} className="card">
               <div className="step-circle" style={{ marginBottom: "0.75rem" }}>{p.n}</div>
@@ -508,7 +583,7 @@ export default function App() {
               <div style={{ fontSize: "0.8rem", color: "var(--text-muted)", lineHeight: 1.6 }}>{p.desc}</div>
             </div>
           ))}
-        </div>
+        </SectionGrid>
       </Sec>
 
       {/* Real-World Case Study */}
@@ -547,7 +622,7 @@ export default function App() {
       {/* Iron Rules */}
       <Sec>
         <SHd title={L(t.ironTitle)} />
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1.25rem" }}>
+        <SectionGrid cols="3">
           {([
             { label: lang === "zh" ? "铁律 #1" : "Rule #1", text: L(t.rule1) },
             { label: lang === "zh" ? "铁律 #2" : "Rule #2", text: L(t.rule2) },
@@ -560,13 +635,13 @@ export default function App() {
               <p style={{ fontSize: "0.9rem", lineHeight: 1.65, fontWeight: 500 }}>{r.text}</p>
             </div>
           ))}
-        </div>
+        </SectionGrid>
       </Sec>
 
       {/* Levels */}
       <Sec id="levels">
         <SHd title={L(t.levelTitle)} desc={L(t.levelDesc)} />
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1.25rem" }}>
+        <SectionGrid cols="2">
           {LEVELS[lang].map(l => (
             <div key={l.level} className="card">
               <div style={{ display: "flex", alignItems: "center", gap: "0.625rem", marginBottom: "0.75rem" }}>
@@ -580,7 +655,7 @@ export default function App() {
               <div className="quote-block">"{l.quote}"</div>
             </div>
           ))}
-        </div>
+        </SectionGrid>
       </Sec>
 
       {/* Methodology */}
@@ -609,18 +684,15 @@ export default function App() {
       {/* Checklist */}
       <Sec>
         <SHd title={L(t.checkTitle)} desc={L(t.checkDesc)} />
-        <div className="card" style={{ maxWidth: "48rem", margin: "0 auto" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.75rem" }}>
+        <div className="card narrow-card">
+          <div className="checklist-grid">
             {CHECKLIST[lang].map((c, i) => (
-              <div key={c.item} style={{ display: "flex", alignItems: "flex-start", gap: "0.625rem", fontSize: "0.875rem" }}>
-                <div style={{
-                  width: "1.25rem", height: "1.25rem", borderRadius: "0.25rem",
-                  border: "1px solid var(--gray-300)", display: "flex", alignItems: "center",
-                  justifyContent: "center", fontSize: "0.7rem", fontFamily: "monospace",
-                  color: "var(--text-muted)", flexShrink: 0, marginTop: "0.1rem",
-                }}>{i + 1}</div>
-                <span style={{ fontWeight: c.gate ? 600 : 400, color: c.gate ? "var(--text)" : "var(--text-secondary)", flex: 1 }}>{c.item}</span>
-                {c.gate && <span className="tag" style={{ flexShrink: 0 }}>{lang === "zh" ? "提问门控" : "Ask Gate"}</span>}
+              <div key={c.item} className="check-item">
+                <div className="check-number">{i + 1}</div>
+                <div className="check-copy">
+                  <span className={c.gate ? "check-text check-text-gated" : "check-text"}>{c.item}</span>
+                  {c.gate && <span className="tag check-gate">{lang === "zh" ? "提问门控" : "Ask Gate"}</span>}
+                </div>
               </div>
             ))}
           </div>
@@ -630,7 +702,7 @@ export default function App() {
       {/* Anti-Rationalization */}
       <Sec alt>
         <SHd title={L(t.shieldTitle)} desc={L(t.shieldDesc)} />
-        <div style={{ border: "1px solid var(--gray-200)", borderRadius: "0.75rem", overflow: "hidden" }}>
+        <div className="table-shell desktop-only" data-testid="excuses-desktop">
           <table className="data-table">
             <thead>
               <tr>
@@ -652,12 +724,13 @@ export default function App() {
             </tbody>
           </table>
         </div>
+        <MobileExcuseCards lang={lang} L={L} />
       </Sec>
 
       {/* Failure Mode Framework */}
       <Sec>
         <SHd title={L(t.failTitle)} desc={L(t.failDesc)} />
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1.25rem" }}>
+        <SectionGrid cols="2">
           {FAILURE_MODES[lang].map(fm => (
             <div key={fm.title} className="card">
               <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginBottom: "0.5rem" }}>
@@ -673,7 +746,7 @@ export default function App() {
               </div>
             </div>
           ))}
-        </div>
+        </SectionGrid>
       </Sec>
 
       {/* Benchmark */}
@@ -694,45 +767,39 @@ export default function App() {
         </div>
 
         <div style={{ marginTop: "1.5rem" }}>
-          <div className="tab-bar">
+          <div className="tab-bar tab-bar-scroll" data-testid="benchmark-tabs">
             {BENCHMARKS.map(b => (
               <button key={b.name} className={`tab-btn${activeTab === b.name ? " active" : ""}`} onClick={() => setActiveTab(b.name)}>
                 {b.name}
               </button>
             ))}
           </div>
-          {BENCHMARKS.filter(b => b.name === activeTab).map(b => (
-            <div key={b.name} className="card" style={{ marginTop: "0.5rem" }}>
-              <div style={{ marginBottom: "1rem" }}>
-                <strong style={{ fontSize: "1rem" }}>{b.name}</strong>
-                <span style={{ marginLeft: "0.75rem", fontSize: "0.85rem", color: "var(--text-muted)" }}>{L(b.style)}</span>
-                <p style={{ fontSize: "0.875rem", color: "var(--text-secondary)", marginTop: "0.5rem", lineHeight: 1.65 }}>{L(b.desc)}</p>
-              </div>
-              <div className="quote-block" style={{ marginBottom: "1.25rem" }}>"{L(b.sample)}"</div>
-              <div>
-                {(Object.keys(b.metrics) as Array<keyof typeof b.metrics>).map(k => (
-                  <div key={k} className="bench-bar">
-                    <div className="bench-label">{L(METRIC_LABELS[k])}</div>
-                    <div className="bench-track">
-                      <div className="bench-fill" style={{ width: `${b.metrics[k]}%` }}>{b.metrics[k]}%</div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-              <div style={{ borderTop: "1px solid var(--gray-200)", marginTop: "1.25rem", paddingTop: "1.25rem", display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1rem", textAlign: "center" as const }}>
-                {([
-                  { val: "+50%", label: lang === "zh" ? "修复深度提升" : "Deeper Fixes" },
-                  { val: "2x", label: lang === "zh" ? "验证次数" : "Verification Runs" },
-                  { val: "5-step", label: lang === "zh" ? "结构化方法论" : "Structured Method" },
-                ] as { val: string; label: string }[]).map(s => (
-                  <div key={s.val}>
-                    <div style={{ fontSize: "1.5rem", fontWeight: 700, letterSpacing: "-0.02em" }}>{s.val}</div>
-                    <div className="stat-label">{s.label}</div>
-                  </div>
-                ))}
-              </div>
+          <div className="card benchmark-panel">
+            <div style={{ marginBottom: "1rem" }}>
+              <strong style={{ fontSize: "1rem" }}>{activeBenchmark.name}</strong>
+              <span className="inline-meta">{L(activeBenchmark.style)}</span>
+              <p style={{ fontSize: "0.875rem", color: "var(--text-secondary)", marginTop: "0.5rem", lineHeight: 1.65 }}>{L(activeBenchmark.desc)}</p>
             </div>
-          ))}
+            <div className="quote-block" style={{ marginBottom: "1.25rem" }}>"{L(activeBenchmark.sample)}"</div>
+            <div>
+              {(Object.keys(activeBenchmark.metrics) as Array<keyof typeof activeBenchmark.metrics>).map(k => (
+                <div key={k} className="bench-bar">
+                  <div className="bench-label">{L(METRIC_LABELS[k])}</div>
+                  <div className="bench-track">
+                    <div className="bench-fill" style={{ width: `${activeBenchmark.metrics[k]}%` }}>{activeBenchmark.metrics[k]}%</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <SectionGrid cols="summary" className="benchmark-summary">
+              {benchmarkSummary.map((summary) => (
+                <div key={summary.label} className="summary-stat">
+                  <div className="summary-stat-value">{summary.val}</div>
+                  <div className="stat-label">{summary.label}</div>
+                </div>
+              ))}
+            </SectionGrid>
+          </div>
         </div>
 
         <div className="card" style={{ marginTop: "1rem" }}>
@@ -742,27 +809,21 @@ export default function App() {
               {lang === "zh" ? "9 个真实场景，18 组对照实验 (Claude Opus 4.6)" : "9 real scenarios, 18 controlled experiments (Claude Opus 4.6)"}
             </p>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: "1rem", textAlign: "center" as const }}>
-            {([
-              { val: "100%", label: lang === "zh" ? "通过率（两组均同）" : "Pass Rate (both)" },
-              { val: "+36%", label: lang === "zh" ? "修复点数↑" : "More Fix Points" },
-              { val: "+65%", label: lang === "zh" ? "验证次数↑" : "More Verifications" },
-              { val: "+50%", label: lang === "zh" ? "工具调用↑" : "Tool Use Increase" },
-              { val: "+50%", label: lang === "zh" ? "隐藏问题发现率↑" : "Hidden Issues Found" },
-            ] as { val: string; label: string }[]).map(s => (
-              <div key={s.val}>
+          <SectionGrid cols="5" className="stat-grid-compact">
+            {benchmarkStats.map((s) => (
+              <div key={s.key} className="stat-card">
                 <div className="stat-num">{s.val}</div>
                 <div className="stat-label">{s.label}</div>
               </div>
             ))}
-          </div>
+          </SectionGrid>
         </div>
       </Sec>
 
       {/* Scenarios */}
       <Sec alt id="scenarios">
         <SHd title={L(t.scenarioTitle)} desc={L(t.scenarioDesc)} />
-        <div style={{ border: "1px solid var(--gray-200)", borderRadius: "0.75rem", overflow: "hidden" }}>
+        <div className="table-shell desktop-only" data-testid="scenarios-desktop">
           <table className="data-table">
             <thead>
               <tr>
@@ -798,12 +859,13 @@ export default function App() {
             </tbody>
           </table>
         </div>
+        <MobileScenarioCards lang={lang} />
       </Sec>
 
       {/* Corporate Styles */}
       <Sec>
         <SHd title={L(t.corpTitle)} desc={L(t.corpDesc)} />
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1.25rem" }}>
+        <SectionGrid cols="2">
           {BENCHMARKS.map(b => (
             <div key={b.name} className="card">
               <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "0.375rem" }}>
@@ -815,7 +877,7 @@ export default function App() {
               <div className="quote-block">"{L(b.sample)}"</div>
             </div>
           ))}
-        </div>
+        </SectionGrid>
       </Sec>
 
       {/* Graceful Exit */}
@@ -829,7 +891,7 @@ export default function App() {
       {/* Usage */}
       <Sec id="install">
         <SHd title={L(t.usageTitle)} />
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1.25rem", maxWidth: "48rem", margin: "0 auto" }}>
+        <SectionGrid cols="2-tight" className="narrow-grid">
           <div className="card">
             <div style={{ marginBottom: "0.5rem" }}>
               <span className="tag tag-black" style={{ fontSize: "0.65rem", letterSpacing: "0.06em" }}>AUTO</span>
@@ -854,8 +916,8 @@ export default function App() {
               <CopyBtn text="/pua" />
             </div>
           </div>
-        </div>
-        <div style={{ maxWidth: "48rem", margin: "2rem auto 0" }}>
+        </SectionGrid>
+        <div className="narrow-block install-block">
           <InstallTabs lang={lang} />
         </div>
       </Sec>
@@ -863,7 +925,7 @@ export default function App() {
       {/* Pairs */}
       <Sec alt>
         <SHd title={L(t.pairsTitle)} />
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1.25rem", maxWidth: "48rem", margin: "0 auto" }}>
+        <SectionGrid cols="2-tight" className="narrow-grid">
           <div className="card">
             <code style={{ fontSize: "0.85rem", fontFamily: "ui-monospace, monospace", display: "block", marginBottom: "0.5rem" }}>
               superpowers:systematic-debugging
@@ -880,7 +942,7 @@ export default function App() {
               {lang === "zh" ? '防止虚假 "已修复"。PUA 驱动解决，verification 确保有效。' : 'Prevents fake "fixed!" claims. PUA drives solving; verification ensures it works.'}
             </p>
           </div>
-        </div>
+        </SectionGrid>
       </Sec>
 
       {/* Footer */}
