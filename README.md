@@ -17,6 +17,7 @@
   <img src="https://img.shields.io/badge/OpenAI_Codex_CLI-412991?style=flat-square&logo=openai&logoColor=white" alt="OpenAI Codex CLI">
   <img src="https://img.shields.io/badge/Cursor-000?style=flat-square&logo=cursor&logoColor=white" alt="Cursor">
   <img src="https://img.shields.io/badge/Kiro-232F3E?style=flat-square&logo=amazon&logoColor=white" alt="Kiro">
+  <img src="https://img.shields.io/badge/🌐_Multi--Language-blue?style=flat-square" alt="Multi-Language">
   <img src="https://img.shields.io/badge/License-MIT-green?style=flat-square" alt="MIT License">
 </p>
 
@@ -179,6 +180,18 @@
 | **部署脚本审计** | **6 个问题**, 8 步, 52s | **9 个问题**, 8 步, 78s | **问题 +50%** |
 
 **核心发现：** 配置审查场景中，without_skill 漏掉了 Redis 配置错误和 CORS 通配符安全隐患。With_skill 的「主动出击清单」驱动了超越表面修复的安全审查。
+
+## 多语言支持 / Multi-Language Support
+
+PUA Skill 提供完整的多语言翻译版本——每种语言都有独立的、经过文化适配的完整 skill 文件。
+
+| 语言 | Claude Code | Codex CLI | Cursor | Kiro |
+|------|------------|-----------|--------|------|
+| 🇨🇳 中文（默认） | `pua-debugging` | `pua-debugging` | `pua-debugging.mdc` | `pua-debugging.md` |
+| 🇺🇸 English | `pua-debugging-en` | `pua-debugging-en` | `pua-debugging-en.mdc` | `pua-debugging-en.md` |
+| 🇯🇵 日本語 | `pua-debugging-ja` | `pua-debugging-ja` | `pua-debugging-ja.mdc` | `pua-debugging-ja.md` |
+
+安装时选择对应语言后缀的文件即可。详见下方各平台安装说明。
 
 ## 安装
 
