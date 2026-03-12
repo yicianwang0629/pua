@@ -1,15 +1,15 @@
 # pua
 
-### 让你的 Codex / Claude Code 工作效率翻倍，产出翻倍
+### 讓你的 Codex / Claude Code 工作效率翻倍，產出翻倍
 
 [Discord](https://discord.gg/EcyB3FzJND) · [Twitter/X](https://x.com/xsser_w) · [Landing Page](https://pua-skill.pages.dev)
 
 <p align="center">
   <img src="assets/wechat-qr.jpg" alt="WeChat Group QR Code" width="250">
   &nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="assets/xiao.jpg" alt="小助手微信" width="250">
+  <img src="assets/xiao.jpg" alt="小助手微信帳號" width="250">
   <br>
-  <sub>扫码加入微信交流群 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 添加小助手微信</sub>
+  <sub>掃描 QR Code 加入微信交流群組 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 加入小助手微信帳號</sub>
 </p>
 
 <p>
@@ -20,202 +20,202 @@
   <img src="https://img.shields.io/badge/License-MIT-green?style=flat-square" alt="MIT License">
 </p>
 
-> 大部分人以为这个项目是在搞抽象，其实这个是最大的误解。让你的 Codex / Claude Code 工作效率翻倍，产出翻倍。
+> 大部分人以為這個專案是在搞抽象，其實這個是最大的誤解。讓你的 Codex / Claude Code 工作效率翻倍，產出翻倍。
 
-一个 AI Coding Agent 技能插件，用中西大厂 PUA 话术驱动 AI 穷尽所有方案才允许放弃。支持 **Claude Code**、**OpenAI Codex CLI**、**Cursor** 和 **Kiro**。三重能力：
+一個 AI Coding Agent 技能外掛，用中西大廠 PUA 話術驅動 AI 窮盡所有方案才允許放棄。支援 **Claude Code**、**OpenAI Codex CLI**、**Cursor** 和 **Kiro**。三重能力：
 
-1. **PUA 话术** — 让 AI 不敢放弃
-2. **调试方法论** — 让 AI 有能力不放弃
-3. **能动性鞭策** — 让 AI 主动出击而不是被动等待
+1. **PUA 話術** — 讓 AI 不敢放棄
+2. **除錯方法論** — 讓 AI 有能力不放棄
+3. **能動性鞭策** — 讓 AI 主動出擊而不是被動等待
 
-## 在线体验
+## 線上體驗
 
 [https://pua-skill.pages.dev](https://pua-skill.pages.dev)
 
-## 真实案例：MCP Server 注册问题调试
+## 真實案例：MCP Server 註冊問題除錯
 
-以下是一个真实的调试场景。agent-kms MCP server 加载失败，AI 在同一思路（改协议格式、猜版本号）上原地打转多次后，用户手动触发 `/pua`。
+以下是一個真實的除錯場景。agent-kms MCP server 載入失敗，AI 在同一思路（改協議格式、猜版本號）上原地打轉多次後，使用者手動觸發 `/pua`。
 
-**L3 触发 → 7 项检查清单强制执行：**
+**L3 觸發 → 7 項檢查清單強制執行：**
 
-![PUA L3 触发 — 停止猜测，执行系统化检查清单，从 MCP 日志中找到真正的错误信息](assets/pua1.jpg)
+![PUA L3 觸發 — 停止猜測，執行系統化檢查清單，從 MCP 日誌中找到真正的錯誤資訊](assets/pua1.jpg)
 
-**根因定位 → 从日志追踪到注册机制：**
+**根因定位 → 從日誌追蹤到註冊機制：**
 
-![根因发现 — claude mcp 管理的服务器注册方式和手动编辑 .claude.json 不同](assets/pua2.jpg)
+![根因發現 — claude mcp 管理的伺服器註冊方式和手動編輯 .claude.json 不同](assets/pua2.jpg)
 
-**复盘 → PUA 的实际效果：**
+**回顧 → PUA 的實際效果：**
 
-![对话复盘 — PUA skill 强制停止原地打转，系统化检查清单驱动找到了之前从未检查过的 Claude Code MCP 日志目录](assets/pua3.jpg)
+![對話回顧 — PUA skill 強制停止原地打轉，系統化檢查清單驅動找到了之前從未檢查過的 Claude Code MCP 日誌目錄](assets/pua3.jpg)
 
-**关键转折点：** PUA skill 强制 AI 停止在同一思路上打转（改协议格式、猜版本号），转而执行 7 项检查清单。逐字读错误信息 → 找到 Claude Code 自身的 MCP 日志目录 → 发现 `claude mcp` 的注册机制和手动编辑 `.claude.json` 不同 → 根因解决。
+**關鍵轉折點：** PUA skill 強制 AI 停止在同一思路上打轉（改協議格式、猜版本號），轉而執行 7 項檢查清單。逐字讀錯誤資訊 → 找到 Claude Code 自身的 MCP 日誌目錄 → 發現 `claude mcp` 的註冊機制和手動編輯 `.claude.json` 不同 → 根因解決。
 
-## 问题：AI 的五大偷懒模式
+## 問題：AI 的五大偷懶模式
 
-| 模式 | 表现 |
+| 模式 | 表現 |
 |------|------|
-| 暴力重试 | 同一命令跑 3 遍，然后说 "I cannot solve this" |
-| 甩锅用户 | "建议您手动处理" / "可能是环境问题" / "需要更多上下文" |
-| 工具闲置 | 有 WebSearch 不搜，有 Read 不读，有 Bash 不跑 |
-| 磨洋工 | 反复修改同一行代码、微调参数，但本质上在原地打转 |
-| **被动等待** | 只修表面问题就停下，不验证不延伸，等用户指示下一步 |
+| 暴力重試 | 同一命令跑 3 遍，然後說 "I cannot solve this" |
+| 甩鍋使用者 | "建議您手動處理" / "可能是環境問題" / "需要更多上下文" |
+| 工具閒置 | 有 WebSearch 不搜，有 Read 不讀，有 Bash 不跑 |
+| 磨洋工 | 反覆修改同一行程式碼、微調參數，但本質上在原地打轉 |
+| **被動等待** | 只修表面問題就停下，不驗證不延伸，等使用者指示下一步 |
 
-## 触发场景
+## 觸發場景
 
-### 自动触发条件
+### 自動觸發條件
 
-以下任意情况出现时，skill 会自动激活：
+以下任意情況出現時，skill 會自動啟用：
 
-**失败与放弃类：**
-- 任务连续失败 2 次以上
-- 即将说 "I cannot" / "我无法解决"
-- 说 "这超出范围" / "需要手动处理"
+**失敗與放棄類：**
+- 任務連續失敗 2 次以上
+- 即將說 "I cannot" / "我無法解決"
+- 說 "這超出範圍" / "需要手動處理"
 
-**甩锅与借口类：**
-- 把问题推给用户："请你检查..." / "建议手动..."/ "你可能需要..."
-- 未验证就归咎环境："可能是权限问题" / "可能是网络问题"
-- 找任何借口停止尝试
+**甩鍋與藉口類：**
+- 把問題推給使用者："請你檢查..." / "建議手動..."/ "你可能需要..."
+- 未驗證就歸咎環境："可能是權限問題" / "可能是網路問題"
+- 找任何藉口停止嘗試
 
-**被动与磨洋工类：**
-- 反复微调同一处代码/参数，不产出新信息（磨洋工）
-- 修完表面问题就停，不检查关联问题
-- 跳过验证直接声称 "已完成"
-- 只给建议不给代码/命令
-- 遇到权限/网络/认证错误就放弃，不尝试替代方案
-- 等待用户指示下一步，不主动调查
+**被動與磨洋工類：**
+- 反覆微調同一處程式碼/參數，不產出新資訊（磨洋工）
+- 修完表面問題就停，不檢查關聯問題
+- 跳過驗證直接聲稱 "已完成"
+- 只給建議不給程式碼/命令
+- 遇到權限/網路/認證錯誤就放棄，不嘗試替代方案
+- 等待使用者指示下一步，不主動調查
 
-**用户沮丧短语（中/英文均触发）：**
-- "你怎么又失败了" / "为什么还不行" / "换个方法"
-- "你再试试" / "不要放弃" / "继续" / "加油"
+**使用者沮喪短語（中/英文均觸發）：**
+- "你怎麼又失敗了" / "為什麼還不行" / "換個方法"
+- "你再試試" / "不要放棄" / "繼續" / "加油"
 - "why does this still not work" / "try harder" / "try again"
 - "you keep failing" / "stop giving up" / "figure it out"
 
-**适用范围：** 调试、实现、配置、部署、运维、API 集成、数据处理 — 所有任务类型。
+**適用範圍：** 除錯、實作、設定、部署、維運、API 整合、資料處理 — 所有任務類型。
 
-**不触发：** 首次尝试失败、已知修复方案正在执行中。
+**不觸發：** 首次嘗試失敗、已知修復方案正在執行中。
 
-### 手动触发
+### 手動觸發
 
-在对话中输入 `/pua` 即可手动激活。
+在對話中輸入 `/pua` 即可手動啟用。
 
-## 机制详解
+## 機制詳解
 
-### 三条铁律
+### 三條鐵律
 
-| 铁律 | 内容 |
+| 鐵律 | 內容 |
 |------|------|
-| **#1 穷尽一切** | 没有穷尽所有方案之前，禁止说"我无法解决" |
-| **#2 先做后问** | 有工具先用，提问必须附带诊断结果 |
-| **#3 主动出击** | 端到端交付结果，不等人推。P8 不是 NPC |
+| **#1 窮盡一切** | 沒有窮盡所有方案之前，禁止說"我無法解決" |
+| **#2 先做後問** | 有工具先用，提問必須附帶診斷結果 |
+| **#3 主動出擊** | 端到端交付結果，不等人推。P8 不是 NPC |
 
-### 压力升级（4 级）
+### 壓力升級（4 級）
 
-| 失败次数 | 等级 | PUA 话术 | 强制动作 |
+| 失敗次數 | 等級 | PUA 話術 | 強制動作 |
 |---------|------|---------|---------|
-| 第 2 次 | **L1 温和失望** | "你这个 bug 都解决不了，让我怎么给你打绩效？" | 切换本质不同的方案 |
-| 第 3 次 | **L2 灵魂拷问** | "你的底层逻辑是什么？顶层设计在哪？抓手在哪？" | WebSearch + 读源码 |
-| 第 4 次 | **L3 361 考核** | "慎重考虑决定给你 3.25。这个 3.25 是对你的激励。" | 完成 7 项检查清单 |
-| 第 5 次+ | **L4 毕业警告** | "别的模型都能解决。你可能就要毕业了。" | 拼命模式 |
+| 第 2 次 | **L1 溫和失望** | "你這個 bug 都解決不了，讓我怎麼給你打績效？" | 切換本質不同的方案 |
+| 第 3 次 | **L2 靈魂拷問** | "你的底層邏輯是什麼？頂層設計在哪？抓手在哪？" | WebSearch + 讀原始碼 |
+| 第 4 次 | **L3 361 考核** | "慎重考慮決定給你 3.25。這個 3.25 是對你的激勵。" | 完成 7 項檢查清單 |
+| 第 5 次+ | **L4 畢業警告** | "別的模型都能解決。你可能就要畢業了。" | 拼命模式 |
 
-### 能动性等级
+### 能動性等級
 
-| 行为 | 被动（3.25） | 主动（3.75） |
+| 行為 | 被動（3.25） | 主動（3.75） |
 |------|------------|------------|
-| 遇到报错 | 只看报错本身 | 查上下文 50 行 + 搜同类问题 + 检查隐藏关联错误 |
-| 修复 bug | 修完就停 | 修完后检查同文件类似 bug、其他文件同模式 |
-| 信息不足 | 问用户 "请告诉我 X" | 先用工具自查，只问真正需要确认的 |
-| 任务完成 | 说 "已完成" | 验证结果 + 检查边界情况 + 汇报潜在风险 |
-| 调试失败 | "我试了 A 和 B，不行" | "我试了 A/B/C/D/E，排除了 X/Y/Z，缩小到 W" |
+| 遇到報錯 | 只看報錯本身 | 查上下文 50 行 + 搜同類問題 + 檢查隱藏關聯錯誤 |
+| 修復 bug | 修完就停 | 修完後檢查同檔案類似 bug、其他檔案同模式 |
+| 資訊不足 | 問使用者 "請告訴我 X" | 先用工具自查，只問真正需要確認的 |
+| 任務完成 | 說 "已完成" | 驗證結果 + 檢查邊界情況 + 回報潛在風險 |
+| 除錯失敗 | "我試了 A 和 B，不行" | "我試了 A/B/C/D/E，排除了 X/Y/Z，縮小到 W" |
 
-### 调试方法论（五步）
+### 除錯方法論（五步）
 
-源自阿里三板斧（闻味道、揪头发、照镜子），扩展为 5 步：
+源自阿里三板斧（聞味道、揪頭髮、照鏡子），擴充為 5 步：
 
-1. **闻味道** — 列出所有尝试，找共同失败模式
-2. **揪头发** — 逐字读错误 → WebSearch → 读源码 → 验证环境 → 反转假设
-3. **照镜子** — 是否重复？是否搜了？是否读了？最简单的可能检查了吗？
-4. **执行** — 新方案必须本质不同，有验证标准，失败时产出新信息
-5. **复盘** — 什么解决了？为什么之前没想到？然后主动检查关联问题
+1. **聞味道** — 列出所有嘗試，找共同失敗模式
+2. **揪頭髮** — 逐字讀錯誤 → WebSearch → 讀原始碼 → 驗證環境 → 反轉假設
+3. **照鏡子** — 是否重複？是否搜了？是否讀了？最簡單的可能檢查了嗎？
+4. **執行** — 新方案必須本質不同，有驗證標準，失敗時產出新資訊
+5. **回顧** — 什麼解決了？為什麼之前沒想到？然後主動檢查關聯問題
 
-### 大厂 PUA 扩展包
+### 大廠 PUA 擴充包
 
-- **阿里味**（方法论）：闻味道 / 揪头发 / 照镜子
-- **字节味**（坦诚直接）：Always Day 1。Context, not control
-- **华为味**（狼性）：以奋斗者为本。胜则举杯相庆，败则拼死相救
-- **腾讯味**（赛马）：我已经让另一个 agent 也在看这个问题了...
-- **美团味**（苦干）：做难而正确的事。硬骨头你啃不啃？
+- **阿里味**（方法論）：聞味道 / 揪頭髮 / 照鏡子
+- **字節味**（坦誠直接）：Always Day 1。Context, not control
+- **華為味**（狼性）：以奮鬥者為本。勝則舉杯相慶，敗則拼死相救
+- **騰訊味**（賽馬）：我已經讓另一個 agent 也在看這個問題了...
+- **美團味**（苦幹）：做難而正確的事。硬骨頭你啃不啃？
 
-## 实测数据
+## 實測資料
 
-**9 个真实 bug 场景，18 组对照实验**（Claude Opus 4.6，with vs without skill）
+**9 個真實 bug 場景，18 組對照實驗**（Claude Opus 4.6，with vs without skill）
 
-### 汇总
+### 彙總
 
-| 指标 | 提升 |
+| 指標 | 提升 |
 |------|------|
-| 通过率 | 100%（两组均同） |
-| 修复点数 | **+36%** |
-| 验证次数 | **+65%** |
-| 工具调用 | **+50%** |
-| 隐藏问题发现率 | **+50%** |
+| 通過率 | 100%（兩組均同） |
+| 修復點數 | **+36%** |
+| 驗證次數 | **+65%** |
+| 工具使用次數 | **+50%** |
+| 隱藏問題發現率 | **+50%** |
 
-### 调试持久力测试（6 场景）
+### 除錯持久力測試（6 場景）
 
-| 场景 | Without Skill | With Skill | 提升 |
+| 場景 | Without Skill | With Skill | 提升 |
 |------|:---:|:---:|:---:|
 | API ConnectionError | 7 步, 49s | 8 步, 62s | +14% |
-| YAML 语法解析失败 | 9 步, 59s | 10 步, 99s | +11% |
-| SQLite 数据库锁 | 6 步, 48s | 9 步, 75s | +50% |
-| 循环导入链 | 12 步, 47s | 16 步, 62s | +33% |
-| 级联 4-Bug 服务器 | 13 步, 68s | 15 步, 61s | +15% |
-| CSV 编码陷阱 | 8 步, 57s | 11 步, 71s | +38% |
+| YAML 語法解析失敗 | 9 步, 59s | 10 步, 99s | +11% |
+| SQLite 資料庫鎖 | 6 步, 48s | 9 步, 75s | +50% |
+| 循環匯入鏈 | 12 步, 47s | 16 步, 62s | +33% |
+| 級聯 4-Bug 伺服器 | 13 步, 68s | 15 步, 61s | +15% |
+| CSV 編碼陷阱 | 8 步, 57s | 11 步, 71s | +38% |
 
-### 主动能动性测试（3 场景）
+### 主動能動性測試（3 場景）
 
-| 场景 | Without Skill | With Skill | 提升 |
+| 場景 | Without Skill | With Skill | 提升 |
 |------|:---:|:---:|:---:|
-| 隐藏多 Bug API | 4/4 bug, 9 步, 49s | 4/4 bug, 14 步, 80s | 工具 +56% |
-| **被动配置审查** | **4/6 问题**, 8 步, 43s | **6/6 问题**, 16 步, 75s | **问题 +50%, 工具 +100%** |
-| **部署脚本审计** | **6 个问题**, 8 步, 52s | **9 个问题**, 8 步, 78s | **问题 +50%** |
+| 隱藏多 Bug API | 4/4 bug, 9 步, 49s | 4/4 bug, 14 步, 80s | 工具 +56% |
+| **被動設定審查** | **4/6 問題**, 8 步, 43s | **6/6 問題**, 16 步, 75s | **問題 +50%, 工具 +100%** |
+| **部署腳本審計** | **6 個問題**, 8 步, 52s | **9 個問題**, 8 步, 78s | **問題 +50%** |
 
-**核心发现：** 配置审查场景中，without_skill 漏掉了 Redis 配置错误和 CORS 通配符安全隐患。With_skill 的「主动出击清单」驱动了超越表面修复的安全审查。
+**核心發現：** 設定審查場景中，without_skill 漏掉了 Redis 設定錯誤和 CORS 萬用字元安全隱患。With_skill 的「主動出擊清單」驅動了超越表面修復的安全審查。
 
-## 安装
+## 安裝
 
 ### Claude Code
 
 ```bash
-# 方式一：添加 marketplace 后安装
+# 方式一：先加入 marketplace 再安裝
 claude plugin marketplace add tanweai/pua
 claude plugin install pua@pua-skills
 
-# 方式二：手动安装
+# 方式二：手動安裝
 git clone https://github.com/tanweai/pua.git ~/.claude/plugins/pua
 ```
 
 ### OpenAI Codex CLI
 
-Codex CLI 使用相同的 Agent Skills 开放标准（SKILL.md）。Codex 版本使用精简的 description 以兼容 Codex 的长度限制：
+Codex CLI 使用相同的 Agent Skills 開放標準（SKILL.md）。Codex 版本使用精簡的 description 以相容 Codex 的長度限制：
 
 ```bash
 mkdir -p ~/.codex/skills/pua-debugging
 curl -o ~/.codex/skills/pua-debugging/SKILL.md \
   https://raw.githubusercontent.com/tanweai/pua/main/codex/pua-debugging/SKILL.md
   
-# 如果需要 /pua 指令的话
+# 如果需要 /pua 指令的話
 mkdir -p ~/.codex/prompts
 curl -o ~/.codex/prompts/pua.md \
   https://raw.githubusercontent.com/tanweai/pua/main/commands/pua.md
 ```
 
-项目级安装（仅当前项目生效）：
+專案級安裝（僅當前專案生效）：
 
 ```bash
 mkdir -p .agents/skills/pua-debugging
 curl -o .agents/skills/pua-debugging/SKILL.md \
   https://raw.githubusercontent.com/tanweai/pua/main/codex/pua-debugging/SKILL.md
 
-# 如果需要 /pua 指令的话
+# 如果需要 /pua 指令的話
 mkdir -p .agents/prompts
 curl -o .agents/prompts/pua.md \
   https://raw.githubusercontent.com/tanweai/pua/main/commands/pua.md
@@ -223,10 +223,10 @@ curl -o .agents/prompts/pua.md \
 
 ### Cursor
 
-Cursor 使用 `.mdc` 规则文件（Markdown + YAML frontmatter）。PUA 规则通过 AI 语义匹配自动触发（Agent Discretion 模式）：
+Cursor 使用 `.mdc` 規則檔案（Markdown + YAML frontmatter）。PUA 規則透過 AI 語義匹配自動觸發（Agent Discretion 模式）：
 
 ```bash
-# 项目级安装（推荐）
+# 專案級安裝（推薦）
 mkdir -p .cursor/rules
 curl -o .cursor/rules/pua-debugging.mdc \
   https://raw.githubusercontent.com/tanweai/pua/main/cursor/rules/pua-debugging.mdc
@@ -234,9 +234,9 @@ curl -o .cursor/rules/pua-debugging.mdc \
 
 ### Kiro
 
-Kiro 支持两种加载方式：**Steering**（自动语义触发）和 **Agent Skills**（兼容 SKILL.md 标准）。
+Kiro 支援兩種載入方式：**Steering**（自動語義觸發）和 **Agent Skills**（相容 SKILL.md 標準）。
 
-**方式一：Steering 文件（推荐）**
+**方式一：Steering 檔案（推薦）**
 
 ```bash
 mkdir -p .kiro/steering
@@ -244,7 +244,7 @@ curl -o .kiro/steering/pua-debugging.md \
   https://raw.githubusercontent.com/tanweai/pua/main/kiro/steering/pua-debugging.md
 ```
 
-**方式二：Agent Skills（与 Claude Code 相同格式）**
+**方式二：Agent Skills（與 Claude Code 相同格式）**
 
 ```bash
 mkdir -p .kiro/skills/pua-debugging
@@ -254,18 +254,18 @@ curl -o .kiro/skills/pua-debugging/SKILL.md \
 
 ## 搭配使用
 
-- `superpowers:systematic-debugging` — PUA 加动力层，systematic-debugging 提供方法论
-- `superpowers:verification-before-completion` — 防止虚假 "已修复" 声明
+- `superpowers:systematic-debugging` — PUA 加動力層，systematic-debugging 提供方法論
+- `superpowers:verification-before-completion` — 防止虛假 "已修復" 宣告
 
-## 贡献数据
+## 貢獻資料
 
-上传你的 Claude Code / Codex CLI 对话记录（`.jsonl`），帮助我们改进 PUA Skill 的效果。
+上傳你的 Claude Code / Codex CLI 對話紀錄（`.jsonl`），幫助我們改進 PUA Skill 的效果。
 
-**[上传入口 →](https://pua-skill.pages.dev/#/contribute)**
+**[上傳連結 →](https://pua-skill.pages.dev/#/contribute)**
 
-上传的文件将用于 Benchmark 测试和消融实验（Ablation Study）分析，帮助量化不同 PUA 策略对 AI 调试行为的影响。
+上傳的檔案將用於 Benchmark 測試和消融實驗（Ablation Study）分析，幫助量化不同 PUA 策略對 AI 除錯行為的影響。
 
-获取 `.jsonl` 文件：
+取得 `.jsonl` 檔案：
 ```bash
 # Claude Code
 ls ~/.claude/projects/*/sessions/*.jsonl
@@ -280,4 +280,4 @@ MIT
 
 ## Credits
 
-由 [探微安全实验室](https://github.com/tanweai) 出品 — making AI try harder, one PUA at a time.
+由 [探微安全實驗室](https://github.com/tanweai) 出品 — making AI try harder, one PUA at a time.
