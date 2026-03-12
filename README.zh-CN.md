@@ -1,5 +1,9 @@
 # pua
 
+<p align="center">
+  <img src="assets/hero.jpeg" alt="PUA Skill — 效率翻倍" width="500">
+</p>
+
 ### 让你的 Codex / Claude Code 工作效率翻倍，产出翻倍
 
 [Discord](https://discord.gg/EcyB3FzJND) · [Twitter/X](https://x.com/xsser_w) · [Landing Page](https://openpua.ai)

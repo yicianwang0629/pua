@@ -1,5 +1,9 @@
 # pua
 
+<p align="center">
+  <img src="assets/hero.jpeg" alt="PUA Skill — 効率倍増" width="500">
+</p>
+
 ### Codex / Claude Code の生産性とアウトプットを倍増させる
 
 [Discord](https://discord.gg/EcyB3FzJND) · [Twitter/X](https://x.com/xsser_w) · [Landing Page](https://openpua.ai)

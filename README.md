@@ -1,5 +1,9 @@
 # pua
 
+<p align="center">
+  <img src="assets/hero.jpeg" alt="PUA Skill — Double Efficiency" width="500">
+</p>
+
 ### Double your Codex / Claude Code productivity and output
 
 [Discord](https://discord.gg/EcyB3FzJND) · [Twitter/X](https://x.com/xsser_w) · [Landing Page](https://openpua.ai)
