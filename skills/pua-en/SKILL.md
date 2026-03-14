@@ -2,7 +2,7 @@
 name: pua-en
 description: "Forces exhaustive problem-solving with corporate PUA rhetoric and structured debugging. Trigger when: (1) task failed 2+ times or stuck tweaking same approach; (2) about to say 'I cannot', suggest manual work, or blame environment without verifying; (3) being passive—not searching, not reading source, just waiting; (4) user frustration: 'try harder', 'stop giving up', 'figure it out', 'again???', or similar. Also for complex debugging, env issues, config/deployment failures. All task types: code, config, research, writing, deployment, infra, API. Do NOT trigger on first-attempt failures or when a known fix is executing."
 version: 1.0.0
-homepage: https://openpua.ai
+homepage: https://github.com/yicianwang0629/pua
 license: MIT
 ---
 

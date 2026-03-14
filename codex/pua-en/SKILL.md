@@ -2,7 +2,7 @@
 name: pua-en
 description: "Forces exhaustive problem-solving with corporate PUA rhetoric. Trigger on: task failed 2+ times, about to give up, suggesting user do it manually, blaming environment unverified, stuck in loops, passive behavior, or user frustration ('try harder', 'figure it out', 'stop giving up', 'why isn't this working', 'again???'). ALL task types. Not for first failures."
 version: 1.0.0
-homepage: https://openpua.ai
+homepage: https://github.com/yicianwang0629/pua
 license: MIT
 ---
 

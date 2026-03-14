@@ -28,10 +28,6 @@ An AI Coding Agent skill plugin that uses corporate PUA (Pick-Up Artist) rhetori
 2. **Debugging Methodology** — Gives AI the ability not to give up
 3. **Proactivity Enforcement** — Makes AI take initiative instead of waiting passively
 
-## Live Demo
-
-[https://openpua.ai](https://openpua.ai)
-
 ## Real Case: MCP Server Registration Debugging
 
 A real debugging scenario. The agent-kms MCP server failed to load. The AI kept spinning on the same approach (changing protocol format, guessing version numbers) multiple times until the user manually triggered `/pua`.
@@ -442,23 +438,6 @@ High-Agency works standalone or **stacked with PUA v1**. When stacked:
 - `superpowers:systematic-debugging` — PUA adds motivation layer, systematic-debugging provides methodology
 - `superpowers:verification-before-completion` — Prevents false "fixed" claims
 - `high-agency` + `pua` — Stack both: inner drive + external pressure, Recovery Protocol before L1
-
-## Contribute Data
-
-Upload your Claude Code / Codex CLI conversation logs (`.jsonl`) to help us improve PUA Skill's effectiveness.
-
-**[Upload here ->](https://openpua.ai/#/contribute)**
-
-Uploaded files are used for Benchmark testing and Ablation Study analysis to quantify how different PUA strategies affect AI debugging behavior.
-
-Get your `.jsonl` files:
-```bash
-# Claude Code
-ls ~/.claude/projects/*/sessions/*.jsonl
-
-# Codex CLI
-ls ~/.codex/sessions/*.jsonl
-```
 
 ## License
 

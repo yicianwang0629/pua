@@ -27,10 +27,6 @@
 2. **调试方法论** — 让 AI 有能力不放弃
 3. **能动性鞭策** — 让 AI 主动出击而不是被动等待
 
-## 在线体验
-
-[https://openpua.ai](https://openpua.ai)
-
 ## 真实案例：MCP Server 注册问题调试
 
 以下是一个真实的调试场景。agent-kms MCP server 加载失败，AI 在同一思路（改协议格式、猜版本号）上原地打转多次后，用户手动触发 `/pua`。
@@ -428,23 +424,6 @@ High-Agency 可独立使用，也可**与 PUA v1 叠加**。叠加时：
 - `superpowers:systematic-debugging` — PUA 加动力层，systematic-debugging 提供方法论
 - `superpowers:verification-before-completion` — 防止虚假 "已修复" 声明
 - `high-agency` + `pua` — 双层叠加：内在驱动 + 外部压力，Recovery Protocol 先于 L1
-
-## 贡献数据
-
-上传你的 Claude Code / Codex CLI 对话记录（`.jsonl`），帮助我们改进 PUA Skill 的效果。
-
-**[上传入口 →](https://openpua.ai/#/contribute)**
-
-上传的文件将用于 Benchmark 测试和消融实验（Ablation Study）分析，帮助量化不同 PUA 策略对 AI 调试行为的影响。
-
-获取 `.jsonl` 文件：
-```bash
-# Claude Code
-ls ~/.claude/projects/*/sessions/*.jsonl
-
-# Codex CLI
-ls ~/.codex/sessions/*.jsonl
-```
 
 ## License
 
