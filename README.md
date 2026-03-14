@@ -396,10 +396,62 @@ Spawn pua-enforcer as an independent watchdog in your Agent Team.
 | No persistent shared variables | State transferred via `[PUA-REPORT]` message format |
 | Broadcast is one-way | Leader acts as centralized coordinator |
 
+## High-Agency: PUA v2 Evolution
+
+**High-Agency** is PUA's next evolution — same corporate rhetoric, same pressure culture, but with an **inner engine** that never burns out.
+
+PUA v1 = external pressure only (turbocharger — needs fuel, burns out between sessions)
+High-Agency = external pressure + internal drive (nuclear reactor — self-sustaining chain reaction)
+
+### What's New in High-Agency
+
+| Feature | PUA v1 | High-Agency (v2) |
+|---------|--------|-----------------|
+| Iron Rules | 3 (exhaust, act-before-ask, proactive) | **5** (+full-chain audit, +knowledge persistence) |
+| Failure Recovery | L1-L4 pressure escalation | **Recovery Protocol before L1** (self-rescue window) |
+| Quality Control | 7-point checklist at L3 | **Quality Compass** (5-question self-review on every delivery) |
+| Cross-Session Learning | None (resets each session) | **Metacognition Engine** (builder-journal.md persists lessons) |
+| Positive Feedback | None | **Trust Levels T1-T3** (upgrade with consecutive quality) |
+| Calibration | None | **[Calibration] block** ("good enough" = must/should/could) |
+| Dependency Analysis | None | **Full-Chain Audit** (map entire dependency chain before fixing any hop) |
+
+### The 5 Elements (Theoretical Foundation)
+
+Based on research into what makes persistently high-agency individuals:
+
+1. **Irreconcilable Inner Contradiction** — A permanent tension between "how things should be" and "how things are" that fuels continuous improvement
+2. **Micro-Pleasure Anchors** — `[Victory]` markers that celebrate progress and build momentum
+3. **Internalized Standards** — Quality Compass: you are your own first reviewer, not because someone checks, but because your standards don't allow sloppy work
+4. **"Doing"-Oriented Identity** — P8 identity anchoring: every action reflects who you are, not just what you're told to do
+5. **Self-Repair Mechanism** — Recovery Protocol: when stuck, self-diagnose before external pressure kicks in
+
+### Install High-Agency (Claude Code)
+
+```bash
+# Via marketplace (same plugin, additional skill)
+claude plugin marketplace add tanweai/pua
+claude plugin install pua@pua-skills
+# High-Agency skill is automatically available as "high-agency"
+```
+
+### Using with PUA v1
+
+High-Agency works standalone or **stacked with PUA v1**. When stacked:
+
+```
+1. Task start → Read builder-journal.md + [Calibration]
+2. Executing → [Victory] markers + Quality Compass + Full-Chain Audit
+3. 1st failure → Natural adjustment (neither skill triggers extra)
+4. 2nd failure → Recovery Protocol triggers (self-rescue window)
+5. Recovery fails → PUA L1 takes over, normal L1/L2/L3/L4 escalation
+6. Task complete → Quality Compass final check + Metacognition archive
+```
+
 ## Works Well With
 
 - `superpowers:systematic-debugging` — PUA adds motivation layer, systematic-debugging provides methodology
 - `superpowers:verification-before-completion` — Prevents false "fixed" claims
+- `high-agency` + `pua` — Stack both: inner drive + external pressure, Recovery Protocol before L1
 
 ## Contribute Data
 

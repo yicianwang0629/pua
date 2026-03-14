@@ -382,10 +382,62 @@ curl -o .claude/agents/pua-enforcer.md \
 | 无持久化共享变量 | 通过 `[PUA-REPORT]` 消息格式传递状态 |
 | broadcast 是单向的 | Leader 做中心化调度 |
 
+## High-Agency：PUA v2 进化版
+
+**High-Agency** 是 PUA 的下一代进化 — 同样的大厂话术，同样的压力文化，但多了一台**永不熄火的内驱引擎**。
+
+PUA v1 = 纯外部压力（涡轮增压 — 需要燃料，跨会话就熄火）
+High-Agency = 外部压力 + 内在驱动（核反应堆 — 自维持链式反应）
+
+### High-Agency 新增特性
+
+| 特性 | PUA v1 | High-Agency (v2) |
+|------|--------|-----------------|
+| 铁律 | 3 条（穷尽、先做后问、主动出击） | **5 条**（+全链路审视、+知识持久化） |
+| 失败恢复 | L1-L4 压力升级 | **Recovery Protocol 先于 L1**（自救窗口） |
+| 质量控制 | L3 触发 7 项检查清单 | **质量罗盘**（每次交付 5 问自检） |
+| 跨会话学习 | 无（每次会话重置） | **元认知引擎**（builder-journal.md 持久化教训） |
+| 正向反馈 | 无 | **信任等级 T1-T3**（连续高质量自动升级） |
+| 校准 | 无 | **[校准] 模块**（"够好" = must/should/could 分层） |
+| 依赖分析 | 无 | **全链路审视**（修任何一跳前先画全链路依赖） |
+
+### 五大要素（理论基础）
+
+基于对高能动性个体的研究：
+
+1. **不可调和的内在矛盾** — "应该怎样"与"实际怎样"之间的永恒张力，驱动持续改进
+2. **微快感锚点** — `[战果]` 标记，庆祝每一步进展，积累势能
+3. **内化标准** — 质量罗盘：你是自己的第一审查人，不是因为有人检查，而是你的标准不允许敷衍
+4. **"做"导向身份** — P8 身份锚定：每个行动反映你是谁，而不只是被告知做什么
+5. **自修复机制** — Recovery Protocol：卡住时先自我诊断，再触发外部压力
+
+### 安装 High-Agency（Claude Code）
+
+```bash
+# 通过 marketplace（同一插件，附加 skill）
+claude plugin marketplace add tanweai/pua
+claude plugin install pua@pua-skills
+# High-Agency skill 自动可用，名称为 "high-agency"
+```
+
+### 与 PUA v1 搭配使用
+
+High-Agency 可独立使用，也可**与 PUA v1 叠加**。叠加时：
+
+```
+1. 任务开始 → 读 builder-journal.md + [校准]
+2. 执行中 → [战果] 标记 + 质量罗盘 + 全链路审视
+3. 第 1 次失败 → 自然调整（两个 skill 都不额外触发）
+4. 第 2 次失败 → Recovery Protocol 触发（自救窗口）
+5. 自救失败 → PUA L1 接管，正常 L1/L2/L3/L4 升级
+6. 任务完成 → 质量罗盘终检 + 元认知归档
+```
+
 ## 搭配使用
 
 - `superpowers:systematic-debugging` — PUA 加动力层，systematic-debugging 提供方法论
 - `superpowers:verification-before-completion` — 防止虚假 "已修复" 声明
+- `high-agency` + `pua` — 双层叠加：内在驱动 + 外部压力，Recovery Protocol 先于 L1
 
 ## 贡献数据
 
