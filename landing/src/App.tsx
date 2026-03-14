@@ -31,8 +31,7 @@ import {
   SCENARIOS,
   inline,
 } from "./i18n"
-
-/* ── Code terminal line renderer ── */
+import Contribute from "./pages/Contribute"
 type CodeSegment = { text: string; cls?: "comment" | "keyword" | "warn" }
 type CLine = CodeSegment[]
 
@@ -311,7 +310,10 @@ export default function App() {
   }, [])
 
   const L = (o: Record<Lang, string>) => o[lang]
-  const activeBenchmark = BENCHMARKS.find((benchmark) => benchmark.name === activeTab) ?? BENCHMARKS[0]
+
+  if (hash === "#/contribute") {
+    return <Contribute lang={lang} />
+  } = BENCHMARKS.find((benchmark) => benchmark.name === activeTab) ?? BENCHMARKS[0]
 
   const benchmarkTabs = BENCHMARKS.map((b) => ({ id: b.name, label: b.name }))
 
@@ -414,6 +416,14 @@ export default function App() {
               <div className="btn-group">
                 <a href="#install" className="btn-cosmic">
                   {L(inline.installSkill)}
+                </a>
+                <a href="#/contribute" className="btn-ghost">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ width: "1rem", height: "1rem" }}>
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                    <polyline points="17 8 12 3 7 8" />
+                    <line x1="12" y1="3" x2="12" y2="15" />
+                  </svg>
+                  {L(inline.contributeData)}
                 </a>
                 <a href="https://github.com/yicianwang0629/pua" target="_blank" rel="noopener noreferrer" className="btn-ghost">
                   <svg viewBox="0 0 98 96" fill="currentColor" style={{ width: "1rem", height: "1rem" }}>
