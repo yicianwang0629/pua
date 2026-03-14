@@ -195,11 +195,11 @@ Choose the file with the corresponding language suffix when installing. See plat
 
 ```bash
 # Option 1: Install via marketplace
-claude plugin marketplace add tanweai/pua
+claude plugin marketplace add yicianwang0629/pua
 claude plugin install pua@pua-skills
 
 # Option 2: Manual install
-git clone https://github.com/tanweai/pua.git ~/.claude/plugins/pua
+git clone https://github.com/yicianwang0629/pua.git ~/.claude/plugins/pua
 ```
 
 ### OpenAI Codex CLI
@@ -209,12 +209,12 @@ Codex CLI uses the same Agent Skills open standard (SKILL.md). The Codex version
 ```bash
 mkdir -p ~/.codex/skills/pua
 curl -o ~/.codex/skills/pua/SKILL.md \
-  https://raw.githubusercontent.com/tanweai/pua/main/codex/pua/SKILL.md
+  https://raw.githubusercontent.com/yicianwang0629/pua/main/codex/pua/SKILL.md
 
 # If you need the /pua command
 mkdir -p ~/.codex/prompts
 curl -o ~/.codex/prompts/pua.md \
-  https://raw.githubusercontent.com/tanweai/pua/main/commands/pua.md
+  https://raw.githubusercontent.com/yicianwang0629/pua/main/commands/pua.md
 ```
 
 Project-level install (current project only):
@@ -222,12 +222,12 @@ Project-level install (current project only):
 ```bash
 mkdir -p .agents/skills/pua
 curl -o .agents/skills/pua/SKILL.md \
-  https://raw.githubusercontent.com/tanweai/pua/main/codex/pua/SKILL.md
+  https://raw.githubusercontent.com/yicianwang0629/pua/main/codex/pua/SKILL.md
 
 # If you need the /pua command
 mkdir -p .agents/prompts
 curl -o .agents/prompts/pua.md \
-  https://raw.githubusercontent.com/tanweai/pua/main/commands/pua.md
+  https://raw.githubusercontent.com/yicianwang0629/pua/main/commands/pua.md
 ```
 
 ### Cursor
@@ -238,7 +238,7 @@ Cursor uses `.mdc` rule files (Markdown + YAML frontmatter). The PUA rule trigge
 # Project-level install (recommended)
 mkdir -p .cursor/rules
 curl -o .cursor/rules/pua.mdc \
-  https://raw.githubusercontent.com/tanweai/pua/main/cursor/rules/pua.mdc
+  https://raw.githubusercontent.com/yicianwang0629/pua/main/cursor/rules/pua.mdc
 ```
 
 ### Kiro
@@ -250,7 +250,7 @@ Kiro supports two loading methods: **Steering** (auto semantic trigger) and **Ag
 ```bash
 mkdir -p .kiro/steering
 curl -o .kiro/steering/pua.md \
-  https://raw.githubusercontent.com/tanweai/pua/main/kiro/steering/pua.md
+  https://raw.githubusercontent.com/yicianwang0629/pua/main/kiro/steering/pua.md
 ```
 
 **Option 2: Agent Skills (same format as Claude Code)**
@@ -258,7 +258,7 @@ curl -o .kiro/steering/pua.md \
 ```bash
 mkdir -p .kiro/skills/pua
 curl -o .kiro/skills/pua/SKILL.md \
-  https://raw.githubusercontent.com/tanweai/pua/main/skills/pua/SKILL.md
+  https://raw.githubusercontent.com/yicianwang0629/pua/main/skills/pua/SKILL.md
 ```
 
 ### OpenClaw
@@ -272,7 +272,7 @@ clawhub install pua
 # Or manual install
 mkdir -p ~/.openclaw/skills/pua
 curl -o ~/.openclaw/skills/pua/SKILL.md \
-  https://raw.githubusercontent.com/tanweai/pua/main/skills/pua/SKILL.md
+  https://raw.githubusercontent.com/yicianwang0629/pua/main/skills/pua/SKILL.md
 ```
 
 Project-level install (current project only):
@@ -280,7 +280,7 @@ Project-level install (current project only):
 ```bash
 mkdir -p skills/pua
 curl -o skills/pua/SKILL.md \
-  https://raw.githubusercontent.com/tanweai/pua/main/skills/pua/SKILL.md
+  https://raw.githubusercontent.com/yicianwang0629/pua/main/skills/pua/SKILL.md
 ```
 
 ### Google Antigravity
@@ -291,7 +291,7 @@ Antigravity uses the same AgentSkills open standard (SKILL.md). Skills work acro
 # Global install (all projects)
 mkdir -p ~/.gemini/antigravity/skills/pua
 curl -o ~/.gemini/antigravity/skills/pua/SKILL.md \
-  https://raw.githubusercontent.com/tanweai/pua/main/skills/pua/SKILL.md
+  https://raw.githubusercontent.com/yicianwang0629/pua/main/skills/pua/SKILL.md
 ```
 
 Project-level install (current project only):
@@ -299,7 +299,7 @@ Project-level install (current project only):
 ```bash
 mkdir -p .agent/skills/pua
 curl -o .agent/skills/pua/SKILL.md \
-  https://raw.githubusercontent.com/tanweai/pua/main/skills/pua/SKILL.md
+  https://raw.githubusercontent.com/yicianwang0629/pua/main/skills/pua/SKILL.md
 ```
 
 ### OpenCode
@@ -310,7 +310,7 @@ OpenCode uses the same AgentSkills open standard (SKILL.md). Zero modifications 
 # Global install (all projects)
 mkdir -p ~/.config/opencode/skills/pua
 curl -o ~/.config/opencode/skills/pua/SKILL.md \
-  https://raw.githubusercontent.com/tanweai/pua/main/skills/pua/SKILL.md
+  https://raw.githubusercontent.com/yicianwang0629/pua/main/skills/pua/SKILL.md
 ```
 
 Project-level install (current project only):
@@ -318,7 +318,7 @@ Project-level install (current project only):
 ```bash
 mkdir -p .opencode/skills/pua
 curl -o .opencode/skills/pua/SKILL.md \
-  https://raw.githubusercontent.com/tanweai/pua/main/skills/pua/SKILL.md
+  https://raw.githubusercontent.com/yicianwang0629/pua/main/skills/pua/SKILL.md
 ```
 
 ## Agent Team Usage Guide
@@ -354,7 +354,7 @@ Leader manages global pressure levels and cross-teammate failure transfer.
 ```bash
 mkdir -p .claude/agents
 curl -o .claude/agents/pua-enforcer.md \
-  https://raw.githubusercontent.com/tanweai/pua/main/agents/pua-enforcer-en.md
+  https://raw.githubusercontent.com/yicianwang0629/pua/main/agents/pua-enforcer-en.md
 ```
 
 Spawn pua-enforcer as an independent watchdog in your Agent Team.
@@ -415,7 +415,7 @@ Based on research into what makes persistently high-agency individuals:
 
 ```bash
 # Via marketplace (same plugin, additional skill)
-claude plugin marketplace add tanweai/pua
+claude plugin marketplace add yicianwang0629/pua
 claude plugin install pua@pua-skills
 # High-Agency skill is automatically available as "high-agency"
 ```
