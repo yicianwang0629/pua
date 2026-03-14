@@ -8,7 +8,7 @@
 
 [Telegram](https://t.me/+wBWh6h-h1RhiZTI1) · [Discord](https://discord.gg/EcyB3FzJND) · [Twitter/X](https://x.com/xsser_w) · [Landing Page](https://openpua.ai)
 
-**[🇺🇸 English](README.md)** | **🇨🇳 中文** | **[🇯🇵 日本語](README.ja.md)**
+**[🇺🇸 English](README.md)** | **🇨🇳 中文** | **[🇹🇼 繁體中文](README.zh-TW.md)** | **[🇯🇵 日本語](README.ja.md)**
 
 <p align="center">
   <img src="assets/wechat-qr.jpg" alt="WeChat Group QR Code" width="250">
