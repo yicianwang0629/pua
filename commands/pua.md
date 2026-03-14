@@ -1,5 +1,5 @@
 ---
-description: PUA Claude into trying harder when stuck on errors. Use when debugging hits a wall and you want the AI to stop giving up.
+description: PUA Claude into trying harder when stuck. Use when the AI gives up, suggests manual work, or loops on the same approach.
 ---
 
-Invoke the ali-pua:pua-debugging skill and follow it exactly as presented to you.
+Invoke the pua:pua skill and follow it exactly as presented to you.
