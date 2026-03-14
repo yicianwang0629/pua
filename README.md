@@ -6,17 +6,7 @@
 
 ### Double your Codex / Claude Code productivity and output
 
-[Telegram](https://t.me/+wBWh6h-h1RhiZTI1) · [Discord](https://discord.gg/EcyB3FzJND) · [Twitter/X](https://x.com/xsser_w) · [Landing Page](https://openpua.ai)
-
 **[🇨🇳 中文](README.zh-CN.md)** | **[🇹🇼 繁體中文](README.zh-TW.md)** | **[🇯🇵 日本語](README.ja.md)** | **🇺🇸 English**
-
-<p align="center">
-  <img src="assets/wechat-qr.jpg" alt="WeChat Group QR Code" width="250">
-  &nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="assets/xiao.jpg" alt="Add Assistant on WeChat" width="250">
-  <br>
-  <sub>Scan to join WeChat group &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Add assistant on WeChat</sub>
-</p>
 
 <p>
   <img src="https://img.shields.io/badge/Claude_Code-black?style=flat-square&logo=anthropic&logoColor=white" alt="Claude Code">

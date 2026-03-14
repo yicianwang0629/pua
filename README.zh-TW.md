@@ -6,17 +6,7 @@
 
 ### 讓你的 Codex / Claude Code 工作效率翻倍，產出翻倍
 
-[Telegram](https://t.me/+wBWh6h-h1RhiZTI1) · [Discord](https://discord.gg/EcyB3FzJND) · [Twitter/X](https://x.com/xsser_w) · [Landing Page](https://openpua.ai)
-
 **[🇺🇸 English](README.md)** | **[🇨🇳 中文](README.zh-CN.md)** | **🇹🇼 繁體中文** | **[🇯🇵 日本語](README.ja.md)**
-
-<p align="center">
-  <img src="assets/wechat-qr.jpg" alt="WeChat Group QR Code" width="250">
-  &nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="assets/xiao.jpg" alt="加入小助手微信" width="250">
-  <br>
-  <sub>掃碼加入微信交流群 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 添加小助手微信</sub>
-</p>
 
 <p>
   <img src="https://img.shields.io/badge/Claude_Code-black?style=flat-square&logo=anthropic&logoColor=white" alt="Claude Code">
